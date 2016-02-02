@@ -1,0 +1,300 @@
+
+#Method that prints a line to break up the text :)
+def line_break
+  puts "\n"
+  puts "-*" * 25
+  puts "\n"
+end
+
+#Method called when a player dies. Prints the reason you died (passed as an argument)
+def dead(reason)
+  print reason, "\tYOU DEAD!\n"
+#delays terimal output
+  sleep(1)
+#computer speaks string
+  print `say You died. Better luck next time George Michael.`
+#kicks user out of the game
+  exit(0)
+end
+
+#Method called when user input is incorrect.
+#sample method randomly selects a response for the user. Mostly insulting ones.
+def wrong_answer
+  puts ["NOPE. Try again.", "Wrong answer, bozo.", "REDO that you jabroni.", "Oh, COME ON! Try again."].sample
+  line_break
+end
+
+#Beginning of the game. Asks user for their name, then ignores it :)
+def intro
+  line_break
+  puts "GAME: The Nightman Cometh"
+  puts "By: Jamie Milanese"
+  line_break
+  sleep(1)
+  puts "Hey, bozo. What's your name?"
+  print "Name: "
+  name = gets.chomp
+  puts "Hi #{name}. I don't care for \"#{name}\""
+  print `say Hi #{name}`
+  sleep(1)
+  print `say I shall call you George Michael`
+  print `say Try not to die George Michael`
+end
+
+#First part of the game. User has 4 options.
+def start
+  puts "\nYou are in a dark room."
+  sleep(1)
+  puts "There are 4 doors in front of you."
+  sleep(1)
+  puts "\nDo you pick door number 1, 2, 3 or 4?"
+  print "Answer:  "
+
+  answer = gets.chomp
+#Depending on user input it will call other methods that represent different rooms in the game.
+#If user input is incorrect it calls the wrong_answer method and makes them start over by calling the start method
+  case answer
+  when "1"
+    fat_pig
+  when "2"
+    kylie_jenner
+  when "3"
+    troll
+  when "4"
+    banana_stand
+  else
+    wrong_answer
+    start
+  end
+end
+
+#Method called when the user chooses Room #1. Gives them 3 options
+def fat_pig
+  line_break
+  puts "\nIn the next room you see a giant fat pig."
+  sleep(1)
+  print `say Oink oink`
+  puts "He is sitting on a throne and wearing a crown."
+  sleep(1)
+  puts "\nWhat do you do? Pick a number."
+  sleep(1)
+  puts "\t1. Feed the fat lard."
+  puts "\t2. Oink at the tubby royalty."
+  puts "\t3. Fire up the grill!"
+  print "Answer: "
+
+  answer = gets.chomp
+#Depending on the users choice it runs one of the following
+#If user input is incorrect, it calls the wrong answer method and starts them at the beginning of this room again.
+  case answer
+  when "1"
+    puts "\nThe pig is happy and gobbles up all your food..."
+    sleep(1)
+    puts  "\nBut then he farts."
+    sleep(1)
+    dead("The gas engulfs the room and suffocates you.")
+  when "2"
+    puts "\nHow dare you insult the royal swine!"
+    sleep(1)
+    dead("\nThe pig is VERY angry and crushes you into the wall.")
+  when "3"
+    puts "\nBoy that bacon was delicious! Your belly is full."
+    sleep(1)
+    start
+  else
+    wrong_answer
+    fat_pig
+  end
+end
+#Method called when the user choose Room #2. Gives them 3 options.
+#If user input is incorrect, it calls the wrong answer method and starts them at the beginning of this room again.
+def kylie_jenner
+  line_break
+  puts "\nKylie Jenner is in this room."
+  print `say oh god`
+  sleep(1)
+  puts "\nWhat do you do? Pick a number."
+  sleep(1)
+  puts "\t1. Take a selfie with her."
+  puts "\t2. Break the wifi"
+  puts "\t3. Douse her in makeup remover."
+  print "Answer: "
+
+  #Depending on the users choice it runs one of the following
+  #2 keeps you alive and puts you back to the start of the game
+  #If user input is incorrect, it calls the wrong answer method and puts them at the beginning of this room again.
+    case answer
+  answer = gets.chomp
+  case answer
+  when "1"
+    puts "\nNO."
+    sleep(1)
+    dead("It's for the best.")
+  when "2"
+    puts "\nHer social media is inaccessible rendering her useless."
+    sleep(1)
+    puts "\nGood job. You may pass through the secret door."
+    troll
+  when "3"
+    puts "\nHer makeup melts off. The sight is unbearable."
+    sleep(1)
+    dead("Your eyeballs are seared.")
+  else
+    wrong_answer
+    kylie_jenner
+  end
+end
+
+#Method called when the user choose Room #3. Gives the user 3 options
+#This is the NOT the winning troll room. User must visit banana_stand method to get to the winning troll room (troll2)
+
+def troll
+  line_break
+  print `say Yikes`
+  puts "\nThere's a mean looking troll in this room."
+  sleep(1)
+  puts "\nWhat do you do? Pick a number."
+  sleep(1)
+  puts "\t1. Pay the troll toll."
+  puts "\t2. Run."
+  puts "\t3. Fight the bastard."
+  print "Answer: "
+  #Depending on the users choice it runs one of the following.
+  #1 keeps you alive and puts you back to the start of the game
+  #If user input is incorrect, it calls the wrong answer method and starts them at the beginning of this room again.
+  answer = gets.chomp
+  case answer
+  when "1"
+    puts "\nYou don't have any money."
+    sleep(1)
+    start
+  when "2"
+    puts "\nToo slow."
+    sleep(1)
+    dead("The troll hits you with his club.")
+  when "3"
+    puts "\nValiant effort. But, no."
+    sleep(1)
+    dead("The troll hits you with his club.")
+  end
+end
+
+#Method called when the user chooses room #4. Gives them 3 options.
+#User must visit this room in order to go to the winning troll room (troll2)
+def banana_stand
+  line_break
+  puts "\nThis room has a frozen banana stand."
+  sleep(1)
+  puts "\nWhat do you do? Pick a number."
+  sleep(1)
+  puts "\t1. Burn it down."
+  puts "\t2. Eat a frozen banana with nuts and chocolate."
+  puts "\t3. Take money from the register."
+  print "Answer: "
+
+  answer = gets.chomp
+  #Depending on the users choice it runs one of the following.
+  #2 and 3 keeps you alive.
+  #If user input is incorrect, it calls the wrong answer method and starts them at the beginning of this room again.
+  case answer
+  when "1"
+    puts "\nNO. There's always money in the banana stand."
+    print `say There is always money in the banana stand`
+    sleep(1)
+    dead("Too much smoke and no windows! Suffocation.")
+
+  #If user picks 2, then it gives them two options.
+  when "2"
+    print `say Mmm tasty`
+    puts "\nWhat next? Pick a number."
+    sleep(1)
+    puts "\t1. Burn it down"
+    puts "\t2. Take money "
+    print "Answer: "
+
+  #They must pick 2 to live which calls winning troll room (troll2).
+  #If user input is incorrect, it calls the wrong answer method and starts them at the beginning of this room.
+    answer = gets.chomp
+    if answer == "1"
+      puts "\nNO. There's always money in the banana stand."
+      print `say There is always money in the banana stand`
+      sleep(1)
+      dead("Too much smoke and no windows! Suffocation.")
+    elsif answer == "2"
+      puts "\nYES. There's always money in the banana stand!"
+      print `say There is always money in the banana stand`
+      sleep(1)
+      puts "\nYou may pass through the secret door."
+      troll2
+    else
+      wrong_answer
+      banana_stand
+    end
+  when "3"
+    puts "\nYES. There's always money in the banana stand!"
+    print `say There is always money in the banana stand`
+    sleep(1)
+    puts "\nYou may pass through the secret door."
+    troll2
+  else
+    wrong_answer
+    banana_stand
+  end
+end
+
+#Winning method! Gives them 3 options
+def troll2
+  line_break
+  print `say Yikes`
+  puts "\nThere's a mean looking troll in this room."
+  sleep(1)
+  puts "\nWhat do you do? Pick a number."
+  sleep(1)
+  puts "\t1. Pay the troll toll."
+  puts "\t2. Run."
+  puts "\t3. Fight the bastard."
+  print "Answer: "
+  #Depending on the users choice it runs one of the following.
+  #1 keeps you alive and gives the user 2 more choices.
+  #If user input is incorrect, it calls the wrong answer method and starts them at the beginning of this room again.
+  answer = gets.chomp
+  case answer
+  when "1"
+    puts "\nYou may pass."
+    sleep(1)
+    puts "\nNow you are in another room and there is a little boy."
+    sleep(1)
+    puts "\nWhat do you do? Pick a number."
+    puts "\t1. Take the boy's hand."
+    puts "\t2. Take the boy's soul."
+    print "Answer:  "
+    answer = gets.chomp
+#2 winning answer! Slight delay and the user is kicked out of the game.
+    if answer == "2"
+      print `say you gotta pay the troll toll to get into this boysoul`
+      print `say Congratulations George Michael`
+      puts "\nYOU WIN. Good job!"
+      sleep(1)
+      exit(0)
+    elsif answer == "1"
+      puts "\nThe boy is possessed."
+      sleep(1)
+      dead("You soul is taken.")
+    else
+      wrong_answer
+      troll2
+    end
+  when "2"
+    puts "\nToo slow."
+    sleep(1)
+    dead("The troll hits you with his club.")
+  when "3"
+    puts "\nValiant effort. But, no."
+    sleep(1)
+    dead("The troll hits you with his club.")
+  end
+end
+
+#Calls the intro method to start the game. Then calls the start method to start the game
+intro
+start
