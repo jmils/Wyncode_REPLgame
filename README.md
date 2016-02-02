@@ -1,4 +1,5 @@
-Wyncode
+REPL Ruby Game
 ======
 
-Git lessons repository
+My simple, silly text adventure game.
+
