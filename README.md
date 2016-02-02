@@ -1,4 +1,4 @@
 Wyncode
 ======
 
-Git lesson repository
+Git lessons repository
